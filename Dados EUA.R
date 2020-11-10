@@ -1,6 +1,6 @@
 #Rotina para coletar algumas séries do FRED
 #Feito por: Felipe Simplício Ferreira
-#última atualização: 24/11/2019
+#última atualização: 10/11/2020
 
 
 #Definindo diretórios a serem utilizados
@@ -9,7 +9,8 @@ getwd()
 setwd("C:/Users/User/Documents")
 
 #Carregando pacotes que serão utilizados
-library("fredr")
+library(fredr)
+library(rio)
 
 #Criando função para coleta de séries
 coleta_dados_fred = function(series, datainicial="2018-01-01", datafinal = format(Sys.time(), "%Y-%m-%d")){
@@ -43,21 +44,25 @@ series_mensais = c("ALTSALES", "AWHAETP", "CES0500000003", "CES0500000011", "CIV
 mensais = coleta_dados_fred(series_mensais) #Criando objeto em que ficam guardados as séries
 
 write.csv2(mensais, "01-mensais.csv", row.names = F) #Salvando arquivo csv em padrão brasileiro
+export(mensais, "dados_eua.xlsx", sheetName  = "mensais")
 
 
 series_anuais = c("LABSHPUSA156NRUG",	"MEHOINUSA672N")
 anuais = coleta_dados_fred(series_anuais)
 
 write.csv2(anuais, "02-anuais.csv", row.names = F)
+export(anuais, "dados_eua.xlsx", which  = "anuais")
 
 
 series_diarias = c("DGS10", "DTWEXM", "SP500", "VIXCLS")
 diarias = coleta_dados_fred(series_diarias)
 
 write.csv2(diarias, "03-diarias.csv", row.names = F)
+export(diarias, "dados_eua.xlsx", which  = "diarias")
 
 
 series_trimestrais = c("A011RE1Q156NBEA", "E318RA3Q086SBEA", "PRS85006092")
 trimestrais = coleta_dados_fred(series_trimestrais)
 
 write.csv2(trimestrais, "04-trimestrais.csv", row.names = F)
+export(trimestrais, "dados_eua.xlsx", which  = "trimestrais")
