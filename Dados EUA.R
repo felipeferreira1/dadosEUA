@@ -44,25 +44,25 @@ series_mensais = c("ALTSALES", "AWHAETP", "CES0500000003", "CES0500000011", "CIV
 mensais = coleta_dados_fred(series_mensais) #Criando objeto em que ficam guardados as séries
 
 write.csv2(mensais, "01-mensais.csv", row.names = F) #Salvando arquivo csv em padrão brasileiro
-export(mensais, "dados_eua.xlsx", sheetName  = "mensais")
+export(mensais, "Dados EUA(fonte).xlsx", sheetName  = "mensais")
 
 
 series_anuais = c("LABSHPUSA156NRUG",	"MEHOINUSA672N")
 anuais = coleta_dados_fred(series_anuais)
 
 write.csv2(anuais, "02-anuais.csv", row.names = F)
-export(anuais, "dados_eua.xlsx", which  = "anuais")
+export(anuais, "Dados EUA(fonte).xlsx", which  = "anuais")
 
 
 series_diarias = c("DGS10", "DTWEXM", "SP500", "VIXCLS")
 diarias = coleta_dados_fred(series_diarias)
 
 write.csv2(diarias, "03-diarias.csv", row.names = F)
-export(diarias, "dados_eua.xlsx", which  = "diarias")
+export(diarias, "Dados EUA(fonte).xlsx", which  = "diarias")
 
 
 series_trimestrais = c("A011RE1Q156NBEA", "E318RA3Q086SBEA", "PRS85006092")
 trimestrais = coleta_dados_fred(series_trimestrais)
 
 write.csv2(trimestrais, "04-trimestrais.csv", row.names = F)
-export(trimestrais, "dados_eua.xlsx", which  = "trimestrais")
+export(trimestrais, "Dados EUA(fonte).xlsx", which  = "trimestrais")
